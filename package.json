@@ -26,7 +26,8 @@
         "gulp-rename": "^1.2.2",
         "gulp-sourcemaps": "^2.6.4",
         "gulp-stylus": "^2.7.0",
-        "gulp-uglify": "^3.0.0"
+        "gulp-uglify": "^3.0.0",
+        "postcss-pxtorem": "^4.0.1"
     },
     "dependencies": {}
 }

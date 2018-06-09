@@ -8,6 +8,7 @@ import stylus from 'gulp-stylus';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'gulp-autoprefixer';
 import cssnano from 'cssnano';
+import pxtorem from 'postcss-pxtorem';
 import sourcemaps from 'gulp-sourcemaps';
 
 import babel from 'gulp-babel';
@@ -65,6 +66,7 @@ const onError = function (err) {
 gulp.task('styles', () => {
   const processors = [
     autoprefixer,
+    pxtorem,
     cssnano
   ];
   gulp.src(styleSrcMain)
