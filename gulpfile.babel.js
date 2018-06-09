@@ -4,7 +4,7 @@
 
 import gulp from 'gulp';
 
-import sass from 'gulp-sass';
+import stylus from 'gulp-stylus';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'gulp-autoprefixer';
 import cssnano from 'cssnano';
@@ -28,7 +28,8 @@ import beep from 'beepbeep';
 const src         = 'source/',
       dest        = 'build/';
 
-const styleSrc        = `${src}assets/sass/**/*.sass`,
+const styleSrcMain    = `${src}assets/styles/main.styl`,
+      styleSrc        = `${src}assets/styles/**/*.styl`,
       styleDest       = `${dest}assets/css/`,
 
       scriptSrc       = `${src}assets/js/*.js`,
@@ -60,19 +61,19 @@ const onError = function (err) {
 // --------------------------------------------
 
 
-// Process SASS
-gulp.task('sass', () => {
+// Process styles
+gulp.task('styles', () => {
   const processors = [
     autoprefixer,
     cssnano
   ];
-  gulp.src(styleSrc)
+  gulp.src(styleSrcMain)
     .pipe(plumber())
     .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
+    .pipe(stylus())
     .pipe(postcss(processors))
     .pipe(rename({
-      basename: 'main',
+      basename: 'styles',
       suffix: '.min'
     }))
     .pipe(sourcemaps.write('.'))
@@ -140,7 +141,7 @@ gulp.task('watch', function () {
     notify: false
   });
 
-  gulp.watch(styleSrc, ['sass']);
+  gulp.watch(styleSrc, ['styles']);
   gulp.watch(scriptSrc, ['scripts']);
   gulp.watch(vendorSrc, ['vendors']);
   gulp.watch(htmlSrcPartials, ['nunjucks']);
@@ -153,7 +154,7 @@ gulp.task('watch', function () {
 
 // use default task to launch Browsersync and watch JS files
 gulp.task('default', [
-  'sass',
+  'styles',
   'scripts',
   'vendors',
   'nunjucks',
