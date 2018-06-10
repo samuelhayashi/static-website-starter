@@ -1,0 +1,33 @@
+ol
+  list-style none
+  padding-left 1.3em
+  counter-reset counter
+  li
+    position relative
+    padding-left 1.2em
+    text-indent -1.2em
+    &:before
+      content counter(counter)
+      counter-increment counter
+      position absolute
+      top: 50%
+      transform translateY(-50%)
+      left 0
+      font-size 1.2em
+      font-weight 700
+
+ul
+  list-style none
+  padding-left 1em
+  li
+    position relative
+    padding-left 1.4em
+    text-indent -1.4em
+    &:before
+      content '・'
+      position absolute
+      top: 50%
+      transform translateY(-50%)
+      left 0
+      font-size 1.5em
+      font-weight 700

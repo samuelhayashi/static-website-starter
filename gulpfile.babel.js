@@ -66,8 +66,7 @@ const onError = function (err) {
 gulp.task('styles', () => {
   const processors = [
     autoprefixer,
-    pxtorem,
-    cssnano
+    pxtorem
   ];
   gulp.src(styleSrcMain)
     .pipe(plumber())

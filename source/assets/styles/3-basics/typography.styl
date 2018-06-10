@@ -1,7 +1,8 @@
 //	Base
 
 html
-  font-size $font-size-base
+  //font-size $font-size-base
+  fluid-type('font-size', 375px, 1200px, $font-size-small, $font-size-base);
 
 body
   -webkit-font-smoothing antialiased
@@ -19,24 +20,34 @@ h1, h2, h3, h4, h5, h6
   margin 1.414em 0 0.5em
   color $color-text
   font-family $font-family-heading
-  font-weight inherit
+  font-weight 700
   line-height 1.2
 
 .huge, h1
-  font-size 50px
+  font-size 39.056px
   margin-top 0
+  +maxw($small-max)
+    font-size 33.184px
 
 .large, h2
-  font-size 38px
+  font-size 31.248px
+  +maxw($small-max)
+    font-size 27.648px
 
 .bigger, h3
-  font-size 28px
+  font-size 25.008px
+  +maxw($small-max)
+    font-size 23.04px
 
 .big, h4
-  font-size 21px
+  font-size 20px
+  +maxw($small-max)
+    font-size 19.2px
 
 .small, small
-  font-size 12px
+  font-size 12.8px
+  +maxw($small-max)
+    font-size 13.328px
 
 
 // Basic Text Style
@@ -44,17 +55,9 @@ h1, h2, h3, h4, h5, h6
 p
   margin 0 0 1.3em 0
   font-weight 400
-  font-size 14px
 
 em
   font-style italic
 
 strong
   font-weight bold
-
-hr
-  border solid #ddd
-  border-width 1px 0 0
-  clear both
-  margin 10px 0 30px
-  height 0

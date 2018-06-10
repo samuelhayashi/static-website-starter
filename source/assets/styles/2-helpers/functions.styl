@@ -1,0 +1,69 @@
+// Fluid type
+
+fluid-type($properties, $min-screen, $max-screen, $min-value, $max-value) {
+  & {
+
+    for $property in $properties {
+      {$property}: $min-value;
+    }
+
+    @media screen and (min-width: $min-screen) {
+      for $property in $properties {
+        {$property}: calc-fluid-type($min-screen, $min-value, $max-screen, $max-value);
+      }
+    }
+
+    @media screen and (min-width: $max-screen) {
+      for $property in $properties {
+        {$property}: $max-value;
+      }
+    }
+  }
+}
+
+calc-fluid-type($min-screen, $min-value, $max-screen, $max-value) {
+  $a = ($max-value - $min-value) / ($max-screen - $min-screen);
+  $b = $min-value - $a * $min-screen;
+
+  $sign = " + ";
+  if ($b < 0 ) {
+    $sign = " - ";
+    $b = abs($b);
+  }
+  return s('calc('+ unit($a*100, 'vw') + $sign + ($b) + ')');
+}
+
+// Media queries
+
+mobile()
+  @media (max-width: 767px)
+    {block}
+
+w(minWidth, maxWidth)
+  @media (min-width: minWidth) and (max-width: maxWidth)
+    {block}
+
+maxw(maxWidth)
+  @media (max-width: maxWidth)
+    {block}
+
+minw(minWidth)
+  @media (min-width: minWidth)
+    {block}
+
+h(minHeight, maxHeight)
+  @media (min-height: minHeight) and (max-height: maxHeight)
+    {block}
+
+maxh(maxHeight)
+  @media (max-height: maxHeight)
+    {block}
+
+minh(minHeight)
+  @media (min-height: minHeight)
+    {block}
+
+border-radius(n)
+  -webkit-border-radius n
+  -moz-border-radius n
+  border-radius n
