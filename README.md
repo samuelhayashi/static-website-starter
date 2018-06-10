@@ -1,6 +1,6 @@
 # Website Project Starter Kit
 
-This is a starter kit indetended to be used for any kind of static website.
+This is a starter kit intended to be used for any kind of static website.
 
 ***
 
@@ -28,7 +28,7 @@ npm install
 Once you have the project open you should be able to open your terminal and type gulp in the command line and magic will take place. Here are the command you can run.
 
 * **default**: Compile and watch for changes
-* **styles**: Compile the Stylus styles
+* **styles**: Compile the [Stylus](http://stylus-lang.com/) styles
 * **scripts**: Compile the JavaScript files
 * **vendors**: Copy the vendor scripts to the build folder
 * **images**: Copy the newer images to the build folder
