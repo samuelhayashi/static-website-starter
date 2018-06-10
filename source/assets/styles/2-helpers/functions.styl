@@ -35,10 +35,6 @@ calc-fluid-type($min-screen, $min-value, $max-screen, $max-value) {
 
 // Media queries
 
-mobile()
-  @media (max-width: 767px)
-    {block}
-
 w(minWidth, maxWidth)
   @media (min-width: minWidth) and (max-width: maxWidth)
     {block}
@@ -62,8 +58,3 @@ maxh(maxHeight)
 minh(minHeight)
   @media (min-height: minHeight)
     {block}
-
-border-radius(n)
-  -webkit-border-radius n
-  -moz-border-radius n
-  border-radius n

@@ -1,11 +1,12 @@
-ol
+.ol
   list-style none
-  padding-left 1.3em
   counter-reset counter
-  li
+  &__item
     position relative
-    padding-left 1.2em
-    text-indent -1.2em
+    padding-left 1.6em
+    margin-top .3em
+    &:first-child
+      margin-top 0
     &:before
       content counter(counter)
       counter-increment counter
@@ -13,16 +14,23 @@ ol
       top: 50%
       transform translateY(-50%)
       left 0
-      font-size 1.2em
+      font-size .6em
       font-weight 700
+      border 1px solid $color-border
+      padding .3em .5em
+      line-height 1
+      box-shadow .5px .5px .5px rgba(#000000,.15)
 
-ul
+.ul
   list-style none
-  padding-left 1em
-  li
+  padding-left .95em
+  &__item
     position relative
     padding-left 1.4em
     text-indent -1.4em
+    margin-top .3em
+    &:first-child
+      margin-top 0
     &:before
       content '・'
       position absolute

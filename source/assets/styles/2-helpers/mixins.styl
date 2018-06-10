@@ -7,3 +7,12 @@ clearfix()
 
   &:after
     clear both
+
+// Hover
+hover-image(transitionVal = $transition-time-img, alphaVal = $opacity-default)
+  transition opacity transitionVal
+  &:hover, &:focus, &:active
+    opacity alphaVal
+
+hover-text(transitionVal = $transition-time-text)
+  transition border-color transitionVal
