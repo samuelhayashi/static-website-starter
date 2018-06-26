@@ -66,7 +66,8 @@ const onError = function (err) {
 gulp.task('styles', () => {
   const processors = [
     autoprefixer,
-    pxtorem
+    pxtorem,
+    cssnano
   ];
   gulp.src(styleSrcMain)
     .pipe(plumber())
@@ -123,6 +124,7 @@ gulp.task('nunjucks', () => {
 // Process images
 gulp.task('images', () => {
   gulp.src(imgSrc)
+    .pipe(imagemin())
     .pipe(gulp.dest(imgDest));
 });
 gulp.task('favicon', () => {
