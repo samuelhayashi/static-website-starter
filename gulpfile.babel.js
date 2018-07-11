@@ -22,7 +22,7 @@ import nunjucksRender from 'gulp-nunjucks-render';
 import browserSync from 'browser-sync';
 import changed from 'gulp-changed';
 import plumber from 'gulp-plumber';
-import beep from 'beepbeep';
+import play from 'play';
 
 
 // Paths
@@ -51,7 +51,7 @@ const styleSrcMain    = `${src}assets/styles/main.styl`,
 
 // Error handler
 const onError = function (err) {
-  beep();
+  play.sound('/Users/ysap_sh/Code/audio/theoffice/problem.wav');
   console.log(err.toString());
   this.emit('end');
 };
@@ -70,7 +70,9 @@ gulp.task('styles', () => {
     cssnano
   ];
   gulp.src(styleSrcMain)
-    .pipe(plumber())
+    .pipe(plumber({
+      errorHandler: onError
+    }))
     .pipe(sourcemaps.init())
     .pipe(stylus())
     .pipe(postcss(processors))
